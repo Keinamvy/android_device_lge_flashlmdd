@@ -28,6 +28,11 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/liblgsnpeawb_beta.so')
     : blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+    'vendor/lib64/libgf_hal.so': (
+        blob_fixup()
+            .remove_needed('libfpsph.so')
+            .add_needed('libgf_hal_shim.so')
+    ),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
